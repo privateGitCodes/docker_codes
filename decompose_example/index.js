@@ -16,7 +16,6 @@ const accessLogStream = fs.createWriteStream(
   { flags: "a" }
 );
 
-// morgan - to maintain log
 app.use(morgan("combined", { stream: accessLogStream }));
 
 // Body parser, reading data from body into req.body
