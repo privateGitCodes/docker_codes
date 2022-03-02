@@ -1,0 +1,30 @@
+docker commands
+
+using and running pre-built images
+- docker run hello-world
+- docker run node
+
+show all processes
+- docker ps -a
+
+- show only running processes
+- docker ps
+
+start node interactive environment
+- docker run -it nodes
+
+tells docker to build a new custom image
+- docker build .
+Note : Here . means docker file is in current working directory
+
+Start container
+- docker run container_name
+
+Start container with port
+- docker run -p 3000:80 container_name
+Note : Here 3000 is local port and 80 is application port exposed
+
+Stop container
+- docker stop container_name
+
+

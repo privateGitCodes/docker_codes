@@ -1,0 +1,25 @@
+1. new project
+2. npm init
+3. create index.js and .env file
+4. create routes folder 
+    - taskRoutes.js
+    - userRoutes.js
+5. create controllers folder  
+    - taskController.js
+    - userController.js
+6. create models folder
+    - taskModel.js
+    - userModel.js
+7. create config folder
+    - db.js
+8. create middlewares
+    - authMiddleWare.js
+    - errorMiddleWare.js
+9. create logs folder
+    - access.log
+10. npm install and npm start
+11. create docker file
+12. create docker compose file
+13. create docker dev
+14. create docker prod
+15. docker-compose -f docker-compose.yaml -f docker-compose-dev.yaml up -d
