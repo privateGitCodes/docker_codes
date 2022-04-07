@@ -1,0 +1,55 @@
+1. npm init
+2. code in app.js
+3. code in Dockerfile
+4. docker build -t my_app .
+5. minikube start
+6. kubectl create deployment first-app --image=my_app
+   - But it will be failed to start deployment
+7. kubectl get deployments
+8. kubectl get pods
+9. kubectl delete deployment first-app
+10. Login to Dockerhub
+11. Create repository
+12. docker tag kub-first-app ravibmpl/kuber-first-app
+13. docker push ravibmpl/kuber-first-app
+		- if access denied error then docker login
+		- then try again from step 12
+14. kubectl create deployment first-app --image=ravibmpl/kuber-first-app
+15. kubectl get deployments
+
+Now we need Service object
+ - to expose pods to cluster or externally
+ - pods have an internal IP by default - it changes when a pod is replaced
+   - but we cannot use that IP to access the pod from outside the cluster
+   - without services pods are very hard to reach and communication gets difficults
+
+16. kubectl expose deployment first-app --type=ClusterIP --port=8080
+    kubectl expose deployment first-app --type=NodePort --port=8080
+    kubectl expose deployment first-app --type=LoadBalancer --port=8080
+
+17. minikube service first-app
+16. Scaling - kubectl scale deployment/first-app --replicas=3
+18. Descaling - kubectl scale deployment/first-app --replicas=1
+19. Rebuilding image after some changes in app
+    - docker build  -t ravibmpl/kuber-first-app .
+20. Updating image - first push the image
+    - docker push ravibmpl/kuber-first-app
+    - kubectl set image deployment/first-app kuber-first-app=ravibmpl/kuber-first-app
+
+Now if no changes are there then we mention version this time
+
+ - docker build  -t ravibmpl/kuber-first-app:2 .
+ - docker push ravibmpl/kuber-first-app:2
+ - kubectl set image deployment/first-app kuber-first-app=ravibmpl/kuber-first-app:2
+
+To see the updates - kubectl rollout status deployment/first-app
+
+21. Rollback update : kubectl rollout undo deployment/first-app
+22. History : kubectl rollout history deployment/first-app --revision=3
+23. Rollback update : kubectl rollout undo deployment/first-app --to-revision=1
+24. kubectl delete service first-app
+
+
+
+
+
